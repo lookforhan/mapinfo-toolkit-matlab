@@ -42,7 +42,7 @@ classdef mapinfo_point_toolkit < handle
             num_point = numel(mid_data_cell(:,1));
             fid_mid = fopen([obj.out_dir,obj.mid_file],'w');
             for i = 1: num_point
-                fprintf(fid_mid,[obj.mid_data_format,'\r\n'],mid_data_cell{i,1},mid_data_cell{i,2},mid_data_cell{i,3},mid_data_cell{i,4});
+                fprintf(fid_mid,[obj.mid_data_format,'\r\n'],mid_data_cell{i,:});
             end
             fclose(fid_mid);
         end
