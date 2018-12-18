@@ -72,9 +72,6 @@ classdef mapinfo_pline_toolkit < handle
                 end
                     fprintf(fid_mif,'    %s\r\n',obj.symbol);
             end
-
-
-
             fclose(fid_mif);
         end
     end
