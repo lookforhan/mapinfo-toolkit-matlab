@@ -47,8 +47,6 @@ classdef mapinfo_point_toolkit < handle
         function Write_mif(obj)
             n_columns = numel(obj.point_columns(:,1));
             n_point = numel(obj.mif_data(:,1));
-            mif_data_cell = table2cell(obj.mif_data);
-            num_point = numel(mif_data_cell(:,1));
             fid_mif = fopen([obj.out_dir,obj.mif_file],'w'); 
             fprintf(fid_mif,'Version 300\r\n');
             fprintf(fid_mif,'Charset "WindowsSimpChinese"\r\n');
@@ -58,7 +56,7 @@ classdef mapinfo_point_toolkit < handle
             for i = 1:n_columns
                 fprintf(fid_mif,'  %s %s\r\n',obj.point_columns.name{i,1},obj.point_columns.class{i,1});
             end
-            fprintf(fid_mif,'Data\r\n\r\n')
+            fprintf(fid_mif,'Data\r\n\r\n');
             for j = 1:n_point
                 fprintf(fid_mif,'Point %f %f\r\n',obj.mif_data.x(j,1),obj.mif_data.y(j,1));
                 fprintf(fid_mif,'    %s\r\n',obj.symbol);
