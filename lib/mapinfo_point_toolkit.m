@@ -11,6 +11,7 @@ classdef mapinfo_point_toolkit < handle
         point_data % 点的属性数据 mid 文件,table格式
         point_graph % 点的图形数据 mif 文件，table格式
         point_columns % 点各列数据的名称和类型， mif 文件, table格式
+        mid_data_format % 点的各列数据输出类型
     end
     properties(Dependent) %
         mid_data
@@ -24,6 +25,7 @@ classdef mapinfo_point_toolkit < handle
         function obj = mapinfo_point_toolkit
             disp('please input out_dir/mid_file/mif_file!')
             disp('please input point_data & point_graph!')
+            disp('please input mid_data_format & point_columns!')
         end
     end
     methods % get 方法
@@ -40,7 +42,7 @@ classdef mapinfo_point_toolkit < handle
             num_point = numel(mid_data_cell(:,1));
             fid_mid = fopen([obj.out_dir,obj.mid_file],'w');
             for i = 1: num_point
-                fprintf(fid_mid,'"%s",%f,%f,"%s"\r\n',mid_data_cell{i,1},mid_data_cell{i,2},mid_data_cell{i,3},mid_data_cell{i,4});
+                fprintf(fid_mid,[obj.mid_data_format,'\r\n'],mid_data_cell{i,1},mid_data_cell{i,2},mid_data_cell{i,3},mid_data_cell{i,4});
             end
             fclose(fid_mid);
         end
