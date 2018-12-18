@@ -48,7 +48,7 @@ classdef mapinfo_pline_toolkit < handle
             num_pline = numel(mid_data_cell(:,1));
             fid_mid = fopen([obj.out_dir,obj.mid_file],'w');
             for i = 1: num_pline
-                fprintf(fid_mid,[obj.mid_data_format,'\r\n'],mid_data_cell{i,1},mid_data_cell{i,2},mid_data_cell{i,3},mid_data_cell{i,4});
+                fprintf(fid_mid,[obj.mid_data_format,'\r\n'],mid_data_cell{i,:});
             end
             fclose(fid_mid);
         end
@@ -62,12 +62,15 @@ classdef mapinfo_pline_toolkit < handle
             fprintf(fid_mif,'CoordSys Earth Projection 1, 0\r\n');
             fprintf(fid_mif,'Columns %d\r\n',n_columns);
             for i = 1:n_columns
-                fprintf(fid_mif,'  %s %s\r\n',obj.pline_columns.name{i,1},obj.point_columns.class{i,1});
+                fprintf(fid_mif,'  %s %s\r\n',obj.pline_columns.name{i,1},obj.pline_columns.class{i,1});
             end
             fprintf(fid_mif,'Data\r\n\r\n');
             for j = 1:n_pline
-                fprintf(fid_mif,'Point %f %f\r\n',obj.mif_data.x(j,1),obj.mif_data.y(j,1));
-                fprintf(fid_mif,'    %s\r\n',obj.symbol);
+                fprintf(fid_mif,'Pline %d\r\n',numel(obj.mif_data.x{j,1}));
+                for k = 1:numel(obj.mif_data.x{j,1})
+                    fprintf(fid_mif,'%f %f\r\n',obj.mif_data.x{j,1}{k,1},obj.mif_data.y{j,1}{k,1});
+                end
+                    fprintf(fid_mif,'    %s\r\n',obj.symbol);
             end
 
 
