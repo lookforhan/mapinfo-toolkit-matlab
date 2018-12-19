@@ -45,3 +45,6 @@ tab
 应用案例可以看.\test\test.m文件。主函数是：epa_inp2mapInfo_mif.m。利用了两个类：mapinfo_point_toolkit.m和mapinfo_pline_toolkit.m，分别实现生成点和线的功能。（.\lib\）
 2018-12-18
 
+## 补充说明
+
+当用生成的pipe.mif,pipe.mid文件导入到mapinfo中时，会发现图形与实际不符，有一定的变形，这是由于采用MapInfo默认坐标系的原因，修改坐标系即可。在Mapinfo 8.5中，地图>选项>投影>Non-Earth中修改
