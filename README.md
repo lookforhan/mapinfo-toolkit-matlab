@@ -28,8 +28,8 @@ tab
 
 ## How to use
 >> addpath('lib');
->> input1 = 'test.inp' 
->> input2 = 'output_dir'
+>> input1 = 'test.inp';
+>> input2 = 'output_dir';
 >> epa_inp2mapinfo_mif(input1,input2);
 
 or see ".\test\test.m"
