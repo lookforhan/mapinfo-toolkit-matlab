@@ -26,6 +26,14 @@ tab
 * .\test : test files
 * .\materials : some materials like test example mif file. 
 
+## How to use
+>> addpath('lib');
+>> input1 = 'test.inp' 
+>> input2 = 'output_dir'
+>> epa_inp2mapinfo_mif(input1,input2);
+
+or see ".\test\test.m"
+
 ## v1.0版本发布
 
 通过两天的努力，终于将第一个版本发布。
